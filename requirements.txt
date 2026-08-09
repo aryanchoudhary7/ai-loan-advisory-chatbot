@@ -8,3 +8,5 @@ python-dotenv
 pytest
 langchain-text-splitters
 langchain-huggingface
+google-genai
+python-dotenv
