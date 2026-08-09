@@ -6,3 +6,4 @@ faiss-cpu
 streamlit
 python-dotenv
 pytest
+langchain-text-splitters
