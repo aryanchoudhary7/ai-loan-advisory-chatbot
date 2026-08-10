@@ -1,5 +1,6 @@
 import streamlit as st
 
+from src.calculators.emi_calculator import calculate_emi
 from src.embeddings.embedding_generator import EmbeddingGenerator
 from src.ingestion.corpus_loader import load_corpus
 from src.llm.gemini_client import GeminiClient
@@ -7,7 +8,6 @@ from src.pipeline.rag_pipeline import RAGPipeline
 from src.preprocessing.corpus_preprocessor import preprocess_corpus
 from src.retrieval.retriever import DocumentRetriever
 from src.vectorstore.faiss_store import FAISSVectorStore
-
 
 st.set_page_config(
     page_title="AI Loan Advisory Chatbot",
@@ -87,6 +87,57 @@ with st.sidebar:
     st.caption(
         "Answers are generated only from retrieved document context."
     )
+
+    st.divider()
+
+    st.header("EMI Calculator")
+
+    principal = st.number_input(
+        "Loan amount (₹)",
+        min_value=1.0,
+        value=500000.0,
+        step=10000.0,
+    )
+
+    interest_rate = st.number_input(
+        "Annual interest rate (%)",
+        min_value=0.0,
+        value=8.5,
+        step=0.1,
+    )
+
+    tenure = st.number_input(
+        "Loan tenure (years)",
+        min_value=1,
+        value=20,
+        step=1,
+    )
+
+    if st.button("Calculate EMI"):
+        try:
+            emi_result = calculate_emi(
+                principal=principal,
+                annual_interest_rate=interest_rate,
+                tenure_years=tenure,
+            )
+
+            st.metric(
+                "Monthly EMI",
+                f"₹{emi_result['emi']:,.2f}",
+            )
+
+            st.write(
+                f"**Total Interest:** "
+                f"₹{emi_result['total_interest']:,.2f}"
+            )
+
+            st.write(
+                f"**Total Repayment:** "
+                f"₹{emi_result['total_repayment']:,.2f}"
+            )
+
+        except ValueError as exc:
+            st.error(str(exc))
 
 
 try:
