@@ -53,6 +53,14 @@ User Question:
 {question}
 
 Answer the question using only the retrieved context.
+
+Rules:
+- Do not use information outside the retrieved context.
+- If the context does not contain enough information, clearly say so.
+- Do not invent or assume missing facts.
+- Give a concise, direct answer.
+- Do not mention source filenames, page numbers, relevance scores, or citations.
+- Source information will be displayed separately by the application.
 """
 
         answer = self.gemini_client.generate(
