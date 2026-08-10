@@ -3,6 +3,7 @@ from src.llm.prompts import LOAN_ADVISORY_SYSTEM_PROMPT
 from src.retrieval.context_builder import build_context
 from src.retrieval.retriever import DocumentRetriever
 from src.pipeline.response import RAGResponse, SourceReference
+from src.validation.response_validator import validate_response
 
 
 class RAGPipeline:
@@ -55,6 +56,7 @@ User Question:
 Answer the question using only the retrieved context.
 
 Rules:
+
 - Do not use information outside the retrieved context.
 - If the context does not contain enough information, clearly say so.
 - Do not invent or assume missing facts.
@@ -63,9 +65,14 @@ Rules:
 - Source information will be displayed separately by the application.
 """
 
-        answer = self.gemini_client.generate(
+        generated_answer = self.gemini_client.generate(
             prompt=prompt,
             system_instruction=LOAN_ADVISORY_SYSTEM_PROMPT,
+        )
+
+        answer = validate_response(
+            answer=generated_answer,
+            context=context,
         )
 
         sources = [

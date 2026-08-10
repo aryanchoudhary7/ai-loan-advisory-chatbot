@@ -9,6 +9,7 @@ from src.preprocessing.corpus_preprocessor import preprocess_corpus
 from src.retrieval.retriever import DocumentRetriever
 from src.vectorstore.faiss_store import FAISSVectorStore
 
+
 st.set_page_config(
     page_title="AI Loan Advisory Chatbot",
     page_icon="🏦",
@@ -59,10 +60,15 @@ st.title("🏦 AI Loan Advisory Chatbot")
 
 st.markdown(
     """
-Ask questions about home loans, personal loans, education loans,
-and RBI loan-related guidelines using the provided documents.
-"""
+    Ask questions about home loans, personal loans, education loans,
+    and RBI loan-related guidelines using the provided documents.
+    """
 )
+
+
+# -------------------------------------------------------------------
+# Sidebar
+# -------------------------------------------------------------------
 
 with st.sidebar:
     st.header("About")
@@ -89,6 +95,10 @@ with st.sidebar:
     )
 
     st.divider()
+
+    # ---------------------------------------------------------------
+    # EMI Calculator
+    # ---------------------------------------------------------------
 
     st.header("EMI Calculator")
 
@@ -140,13 +150,22 @@ with st.sidebar:
             st.error(str(exc))
 
 
+# -------------------------------------------------------------------
+# Initialize RAG pipeline
+# -------------------------------------------------------------------
+
 try:
     pipeline = initialize_pipeline()
+
 except Exception as exc:
     st.error("Unable to initialize the loan advisory system.")
     st.exception(exc)
     st.stop()
 
+
+# -------------------------------------------------------------------
+# Chat interface
+# -------------------------------------------------------------------
 
 question = st.chat_input(
     "Ask a question about loans..."
@@ -158,7 +177,9 @@ if question:
         st.write(question)
 
     with st.chat_message("assistant"):
-        with st.spinner("Searching documents and generating answer..."):
+        with st.spinner(
+            "Searching documents and generating answer..."
+        ):
             try:
                 response = pipeline.ask(
                     question=question,
@@ -166,6 +187,10 @@ if question:
                 )
 
                 st.write(response.answer)
+
+                # ---------------------------------------------------
+                # Sources
+                # ---------------------------------------------------
 
                 if response.sources:
                     st.divider()
@@ -180,22 +205,37 @@ if question:
                                 "scores": [],
                             }
 
-                        grouped_sources[source.source]["pages"].append(source.page)
-                        grouped_sources[source.source]["scores"].append(source.score)
+                        grouped_sources[source.source][
+                            "pages"
+                        ].append(source.page)
 
-                    for index, (source_name, data) in enumerate(
+                        grouped_sources[source.source][
+                            "scores"
+                        ].append(source.score)
+
+                    for index, (
+                        source_name,
+                        data,
+                    ) in enumerate(
                         grouped_sources.items(),
                         start=1,
                     ):
-                        pages = sorted(set(data["pages"]))
-                        max_score = max(data["scores"])
+                        pages = sorted(
+                            set(data["pages"])
+                        )
+
+                        max_score = max(
+                            data["scores"]
+                        )
 
                         with st.expander(
                             f"Source {index}: {source_name}"
                         ):
                             st.write(
-                                f"**Pages:** {', '.join(map(str, pages))}"
+                                f"**Pages:** "
+                                f"{', '.join(map(str, pages))}"
                             )
+
                             st.write(
                                 f"**Best relevance score:** "
                                 f"{max_score:.4f}"
