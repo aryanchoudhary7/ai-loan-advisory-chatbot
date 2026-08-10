@@ -34,6 +34,12 @@ The application also includes a deterministic EMI calculator that calculates mon
 - Streamlit interface
 - Automated testing
 
+
+## Demo
+
+![AI Loan Advisory Chatbot](screenshots/demo.png)
+
+
 ## Document Corpus
 
 The application uses 14 publicly available financial documents from:
