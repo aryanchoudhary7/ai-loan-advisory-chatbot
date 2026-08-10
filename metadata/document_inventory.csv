@@ -1,0 +1,15 @@
+institution,institution_type,loan_type,document_type,source,relative_path
+AXIS,bank,education_loan,terms_and_conditions,education-loan-agreement.pdf,axis\education_loan\education-loan-agreement.pdf
+AXIS,bank,home_loan,terms_and_conditions,home-loan-and-lap-static-loan-agreement.pdf,axis\home_loan\home-loan-and-lap-static-loan-agreement.pdf
+AXIS,bank,personal_loan,terms_and_conditions,personal-loans-tc.pdf,axis\personal_loan\personal-loans-tc.pdf
+ICICI,bank,education_loan,terms_and_conditions,tnc-09122024.pdf,icici\education_loan\tnc-09122024.pdf
+ICICI,bank,home_loan,terms_and_conditions,tanc-property.pdf,icici\home_loan\tanc-property.pdf
+ICICI,bank,personal_loan,terms_and_conditions,terms-and-conditions-unsecured-loans.pdf,icici\personal_loan\terms-and-conditions-unsecured-loans.pdf
+RBI,regulator,general,regulatory_guideline,rbi_fair_practices_charging_interest_2024.pdf,rbi\rbi_fair_practices_charging_interest_2024.pdf
+RBI,regulator,general,regulatory_guideline,rbi_floating_rate_emi_personal_loans.pdf,rbi\rbi_floating_rate_emi_personal_loans.pdf
+RBI,regulator,general,regulatory_guideline,rbi_kfs_loans_advances_2024.pdf,rbi\rbi_kfs_loans_advances_2024.pdf
+RBI,regulator,general,regulatory_guideline,rbi_penal_charges_loan_accounts.pdf,rbi\rbi_penal_charges_loan_accounts.pdf
+RBI,regulator,general,regulatory_guideline,rbi_release_property_documents_2023.pdf,rbi\rbi_release_property_documents_2023.pdf
+SBI,bank,education_loan,MITC,MITC-Student Loan- Nov'2024.pdf,sbi\education_loan\MITC-Student Loan- Nov'2024.pdf
+SBI,bank,home_loan,MITC,sbi_home_loan_mitc.pdf,sbi\home_loan\sbi_home_loan_mitc.pdf
+SBI,bank,personal_loan,MITC,130722-Personal Loans - MITC revised.pdf,sbi\personal_loan\130722-Personal Loans - MITC revised.pdf

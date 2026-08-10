@@ -3,7 +3,7 @@ import pytest
 from src.ingestion.document_loader import load_pdf
 
 
-PDF_PATH = "data/raw/sbi/sbi_home_loan_mitc.pdf"
+PDF_PATH = "data/raw/sbi/home_loan/sbi_home_loan_mitc.pdf"
 
 
 def test_load_pdf():
