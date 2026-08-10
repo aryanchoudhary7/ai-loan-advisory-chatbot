@@ -243,6 +243,7 @@ The warning is a dependency deprecation warning and does not cause test failures
 ## Limitations
 
 - Responses are limited to the indexed document corpus.
+- If the required information is not available in the indexed documents, the system does not assume or invent missing information.
 - Loan policies and regulatory guidelines may change over time.
 - EMI calculations are estimates and may not include bank-specific charges.
 - The system is intended for informational purposes and not as a substitute for professional financial advice.
