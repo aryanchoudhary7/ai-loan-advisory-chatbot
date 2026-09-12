@@ -2,6 +2,12 @@
 
 An AI-powered Loan Advisory Agent that allows users to ask loan-related questions in natural language and receive accurate, source-backed answers. The system processes financial documents such as bank loan terms and RBI guidelines, retrieves the most relevant information using semantic search, and generates clear responses using Retrieval-Augmented Generation (RAG).
 
+
+## Live Demo
+
+[Try the AI Loan Advisory Chatbot](https://ai-loan-advisory-chatbot.streamlit.app)
+
+
 ## Problem Statement
 
 The AI Loan Advisory Agent is designed to help users understand loan-related information without manually reading lengthy financial documents.
