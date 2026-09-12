@@ -30,7 +30,7 @@ data/processed/
 data/metadata/
 
 # Vector database
-vectorstore/
+data/vectorstore/
 faiss_index/
 
 # Temporary files
