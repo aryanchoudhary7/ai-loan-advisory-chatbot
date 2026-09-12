@@ -41,7 +41,7 @@ def build_inventory():
                     institution, loan_type
                 ),
                 "source": pdf_path.name,
-                "relative_path": str(relative_path),
+                "relative_path": relative_path.as_posix(),
             }
         )
 
